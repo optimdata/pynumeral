@@ -82,7 +82,9 @@ class BaseFormatter(Formatter):
         float_or_exp = "e" if "e+0" in numeralfmt else "f"
         if re.match("^0{2,}$", numeralfmt.split(",")[0]):
             fmt = "{:0%s%s}" % (
-                len(numeralfmt.split(",")[0]) + int(math.log10(value) / 3),
+                len(numeralfmt.split(",")[0])
+                + (int(math.log10(abs(value)) / 3) if value != 0 else 0)
+                + int(value < 0),
                 thousand,
             )
             value = int(value)
