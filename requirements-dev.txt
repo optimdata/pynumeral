@@ -1,0 +1,13 @@
+black==18.6b4
+bumpversion==0.5.3
+coverage==4.5.3
+flake8==3.7.7
+pytest-cov==2.6.1
+pytest-runner==2.11.1
+pytest==4.3.1
+recommonmark==0.6.0
+sphinx==1.8.5
+tox==2.9.1
+twine==2.0.0
+watchdog==0.8.3
+wheel==0.30.0

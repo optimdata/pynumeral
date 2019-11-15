@@ -10,7 +10,3 @@ It only provides a simple api `pynumeral.format(value, format)`.
 * License: [MIT license](https://github.com/optimdata/pynumeral/blob/master/LICENSE)
 * Source: https://github.com/optimdata/pynumeral
 * Issues: https://github.com/optimdata/pynumeral/issues
-
-# Credits
-
-This package was created with [Cookiecutter](https://github.com/audreyr/cookiecutter) and the [`audreyr/cookiecutter-pypackage`](https://github.com/audreyr/cookiecutter-pypackage) project template.
