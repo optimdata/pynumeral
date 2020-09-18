@@ -11,7 +11,7 @@ script:
 
   - flake8 .
   - black --check .
-  - pytest
+  - pytest -v
   - coverage xml -o coverage.xml
 
 after_success:
