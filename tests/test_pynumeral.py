@@ -60,3 +60,4 @@ def test_all():
     assert pynumeral.format(0.000123987, "0.000e+0") == "1.240e-04"
     assert pynumeral.format(1, "0 a") == "1 "
     assert pynumeral.format(-1, "00") == "-01"
+    assert pynumeral.format(1, "0,0.[000]") == "1"

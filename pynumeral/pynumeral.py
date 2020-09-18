@@ -80,6 +80,7 @@ class BaseFormatter(Formatter):
     def get_python_format(self, numeralfmt, value):
         thousand = "," if "," in numeralfmt else ""
         float_or_exp = "e" if "e+0" in numeralfmt else "f"
+        precision = numeralfmt.split(".")[1] if "." in numeralfmt else None
         if re.match("^0{2,}$", numeralfmt.split(",")[0]):
             fmt = "{:0%s%s}" % (
                 len(numeralfmt.split(",")[0])
@@ -89,15 +90,15 @@ class BaseFormatter(Formatter):
             )
             value = int(value)
         else:
-            if "." in numeralfmt:
-                decimals = len(
-                    list(
-                        filter(
-                            lambda c: c == "0",
-                            numeralfmt.split(".")[1].replace("e+0", ""),
-                        )
+            if precision is not None:
+                if "[" in numeralfmt and "[.]" not in numeralfmt:
+                    precision = precision.replace("]", "").split("[")
+                    split_val = str(value).split(".")
+                    decimals = 0 if len(split_val) == 1 else precision[1].count("0")
+                else:
+                    decimals = len(
+                        list(filter(lambda c: c == "0", precision.replace("e+0", "")))
                     )
-                )
             else:
                 decimals = 0
             plus = "+" if re.match(".*(^|[^e])\\+.*", numeralfmt) else "-"
